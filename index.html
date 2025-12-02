@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Damsel Agency | CRM & Email Marketing Experts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coral: #FF6B6B;
+      --coral-dark: #E85555;
+      --mint: #4ECDC4;
+      --mint-light: #A8E6CF;
+      --cream: #FFF9F0;
+      --navy: #2C3E50;
+      --navy-light: #34495E;
+      --peach: #FFE5D9;
+      --lavender: #E8D5FF;
+      --yellow: #FFE66D;
+      --white: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+    }
+
+    /* Animated grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 249, 240, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 2px solid var(--navy);
+    }
+
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--coral);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--coral);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--coral);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--coral);
+      color: var(--white) !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      padding: 10rem 4rem 6rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-shape {
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 800px;
+      height: 800px;
+      background: linear-gradient(135deg, var(--peach) 0%, var(--lavender) 100%);
+      border-radius: 50%;
+      opacity: 0.5;
+      z-index: -1;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .hero-bg-shape-2 {
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: var(--mint-light);
+      border-radius: 50%;
+      opacity: 0.3;
+      z-index: -1;
+      animation: float 6s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(30px, 30px) rotate(5deg); }
+    }
+
+    .hero-content h1 {
+      font-size: 4.5rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--navy);
+    }
+
+    .hero-content h1 span {
+      color: var(--coral);
+      position: relative;
+    }
+
+    .hero-content h1 span::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+      background: var(--yellow);
+      z-index: -1;
+      transform: skewX(-5deg);
+    }
+
+    .hero-tagline {
+      font-size: 1.4rem;
+      color: var(--navy-light);
+      margin-bottom: 2rem;
+      max-width: 540px;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--white);
+      border: 2px solid var(--navy);
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 3px 3px 0 var(--navy);
+      transition: all 0.2s;
+    }
+
+    .badge:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--navy);
+    }
+
+    .badge.iterable {
+      background: var(--mint);
+      color: var(--navy);
+    }
+
+    .badge.pet {
+      background: var(--peach);
+    }
+
+    .badge.travel {
+      background: var(--lavender);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: var(--coral);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 100px;
+      border: 2px solid var(--coral);
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+
+    .btn-primary:hover {
+      background: var(--coral-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 100px;
+      border: 2px solid var(--navy);
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+
+    .btn-secondary:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border: 3px solid var(--navy);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 8px 8px 0 var(--navy);
+      transform: rotate(2deg);
+      animation: cardFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: rotate(2deg) translateY(0); }
+      50% { transform: rotate(2deg) translateY(-10px); }
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px dashed var(--peach);
+    }
+
+    .hero-card-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--mint);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .hero-card-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+    }
+
+    .hero-card-stat {
+      font-size: 0.9rem;
+      color: var(--mint);
+      font-weight: 600;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--peach);
+    }
+
+    .metric-row:last-child {
+      border-bottom: none;
+    }
+
+    .metric-label {
+      font-size: 0.9rem;
+      color: var(--navy-light);
+    }
+
+    .metric-value {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .metric-value.up {
+      color: var(--mint);
+    }
+
+    .floating-badge {
+      position: absolute;
+      background: var(--white);
+      border: 2px solid var(--navy);
+      border-radius: 100px;
+      padding: 0.75rem 1.25rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 4px 4px 0 var(--navy);
+      animation: floatBadge 3s ease-in-out infinite;
+    }
+
+    .floating-badge-1 {
+      top: -20px;
+      right: 40px;
+      background: var(--yellow);
+      animation-delay: 0s;
+    }
+
+    .floating-badge-2 {
+      bottom: 80px;
+      left: -30px;
+      background: var(--lavender);
+      animation-delay: 1s;
+    }
+
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Services Section */
+    .services {
+      padding: 8rem 4rem;
+      background: var(--white);
+      position: relative;
+    }
+
+    .services::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--coral) 0,
+        var(--coral) 20px,
+        var(--mint) 20px,
+        var(--mint) 40px,
+        var(--yellow) 40px,
+        var(--yellow) 60px,
+        var(--lavender) 60px,
+        var(--lavender) 80px
+      );
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      background: var(--peach);
+      color: var(--coral-dark);
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--navy-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border: 3px solid var(--navy);
+      border-radius: 24px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 8px 8px 0 var(--navy);
+    }
+
+    .service-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, var(--mint) 0%, var(--mint-light) 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--white);
+      border: 2px solid var(--navy);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 4px 4px 0 var(--navy);
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-description {
+      color: var(--navy-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features {
+      list-style: none;
+    }
+
+    .service-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      color: var(--navy);
+      font-size: 0.95rem;
+    }
+
+    .service-features li::before {
+      content: '✓';
+      width: 24px;
+      height: 24px;
+      background: var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    /* Engagement Models */
+    .engagement {
+      padding: 8rem 4rem;
+      background: var(--navy);
+      color: var(--white);
+      position: relative;
+    }
+
+    .engagement .section-eyebrow {
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .engagement .section-title {
+      color: var(--white);
+    }
+
+    .engagement .section-subtitle {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .engagement-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .engagement-card {
+      background: rgba(255,255,255,0.05);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 2.5rem;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .engagement-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--coral);
+      transform: translateY(-5px);
+    }
+
+    .engagement-card.popular {
+      border-color: var(--coral);
+      background: rgba(255,107,107,0.1);
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--coral);
+      color: var(--white);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .engagement-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--coral);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .engagement-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .engagement-subtitle {
+      font-size: 0.95rem;
+      color: var(--mint);
+      margin-bottom: 1.5rem;
+    }
+
+    .engagement-description {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .engagement-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .engagement-features li {
+      padding: 0.5rem 0;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .engagement-features li::before {
+      content: '→';
+      color: var(--mint);
+    }
+
+    .engagement-card .btn-primary {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Industries Section */
+    .industries {
+      padding: 8rem 4rem;
+      background: var(--cream);
+    }
+
+    .industries-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .industry-card {
+      background: var(--white);
+      border: 3px solid var(--navy);
+      border-radius: 24px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .industry-card:hover {
+      transform: translateY(-5px) rotate(-1deg);
+      box-shadow: 8px 8px 0 var(--navy);
+    }
+
+    .industry-card.primary {
+      background: linear-gradient(135deg, var(--peach) 0%, #FFD5C2 100%);
+    }
+
+    .industry-card.primary .industry-badge {
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .industry-emoji {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .industry-name {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .industry-description {
+      font-size: 0.9rem;
+      color: var(--navy-light);
+      margin-bottom: 1rem;
+    }
+
+    .industry-badge {
+      display: inline-block;
+      background: var(--mint-light);
+      color: var(--navy);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Platform Expertise */
+    .platforms {
+      padding: 6rem 4rem;
+      background: var(--mint);
+      text-align: center;
+    }
+
+    .platforms-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .platforms h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--navy);
+    }
+
+    .platforms p {
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 3rem;
+      opacity: 0.9;
+    }
+
+    .platform-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--white);
+      padding: 1.5rem 3rem;
+      border-radius: 100px;
+      border: 3px solid var(--navy);
+      box-shadow: 6px 6px 0 var(--navy);
+      margin-bottom: 2rem;
+    }
+
+    .platform-logo svg {
+      height: 40px;
+      width: auto;
+    }
+
+    .platform-logo span {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .platform-stats {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Fraunces', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--navy);
+      opacity: 0.8;
+    }
+
+    /* Case Studies */
+    .case-studies {
+      padding: 8rem 4rem;
+      background: var(--white);
+    }
+
+    .case-studies-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .case-study-card {
+      background: var(--cream);
+      border: 3px solid var(--navy);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .case-study-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 8px 8px 0 var(--navy);
+    }
+
+    .case-study-image {
+      height: 200px;
+      background: linear-gradient(135deg, var(--peach), var(--lavender));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      border-bottom: 3px solid var(--navy);
+    }
+
+    .case-study-content {
+      padding: 2rem;
+    }
+
+    .case-study-industry {
+      display: inline-block;
+      background: var(--mint-light);
+      color: var(--navy);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .case-study-title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .case-study-results {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-item {
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--coral);
+      line-height: 1;
+    }
+
+    .result-label {
+      font-size: 0.8rem;
+      color: var(--navy-light);
+    }
+
+    .case-study-link {
+      color: var(--coral);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .case-study-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Blog/Articles Preview */
+    .blog {
+      padding: 8rem 4rem;
+      background: var(--cream);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .blog-card {
+      background: var(--white);
+      border: 3px solid var(--navy);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px) rotate(1deg);
+      box-shadow: 8px 8px 0 var(--navy);
+    }
+
+    .blog-image {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      border-bottom: 3px solid var(--navy);
+    }
+
+    .blog-card:nth-child(1) .blog-image {
+      background: linear-gradient(135deg, var(--mint), var(--mint-light));
+    }
+
+    .blog-card:nth-child(2) .blog-image {
+      background: linear-gradient(135deg, var(--peach), var(--yellow));
+    }
+
+    .blog-card:nth-child(3) .blog-image {
+      background: linear-gradient(135deg, var(--lavender), var(--peach));
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+    }
+
+    .blog-tag {
+      display: inline-block;
+      background: var(--mint-light);
+      color: var(--navy);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .blog-excerpt {
+      font-size: 0.9rem;
+      color: var(--navy-light);
+      margin-bottom: 1rem;
+    }
+
+    .blog-link {
+      color: var(--coral);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .blog-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Team Section */
+    .team {
+      padding: 8rem 4rem;
+      background: var(--white);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .team-avatar {
+      width: 160px;
+      height: 160px;
+      background: linear-gradient(135deg, var(--peach), var(--lavender));
+      border: 4px solid var(--navy);
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-avatar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: var(--cream);
+    }
+
+    .team-name {
+      font-size: 1.4rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .team-role {
+      color: var(--coral);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .team-bio {
+      font-size: 0.9rem;
+      color: var(--navy-light);
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 8rem 4rem;
+      background: linear-gradient(135deg, var(--coral) 0%, var(--coral-dark) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+    }
+
+    .cta-shape {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+    }
+
+    .cta-shape-1 {
+      width: 300px;
+      height: 300px;
+      top: -100px;
+      left: -100px;
+    }
+
+    .cta-shape-2 {
+      width: 200px;
+      height: 200px;
+      bottom: -50px;
+      right: 10%;
+    }
+
+    .cta-shape-3 {
+      width: 100px;
+      height: 100px;
+      top: 20%;
+      right: 20%;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      font-size: 3rem;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+    }
+
+    .cta .btn-primary {
+      background: var(--white);
+      color: var(--coral);
+      border-color: var(--white);
+      font-size: 1.1rem;
+      padding: 1.2rem 2.5rem;
+    }
+
+    .cta .btn-primary:hover {
+      background: var(--cream);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: var(--white);
+      padding: 4rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand .logo {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 300px;
+    }
+
+    .footer-column h4 {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-column ul a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-column ul a:hover {
+      color: var(--mint);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      nav {
+        padding: 1rem 2rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+
+      .hero-tagline {
+        margin: 0 auto 2rem;
+      }
+
+      .hero-badges {
+        justify-content: center;
+      }
+
+      .hero-ctas {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .services-grid,
+      .engagement-cards,
+      .industries-grid,
+      .case-studies-grid,
+      .blog-grid,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card.featured {
+        grid-column: span 1;
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .platform-stats {
+        gap: 2rem;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+        </svg>
+      </div>
+      Damsel Agency
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how-we-work">How We Work</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#case-studies">Case Studies</a></li>
+      <li><a href="#blog">Insights</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-shape"></div>
+    <div class="hero-bg-shape-2"></div>
+    
+    <div class="hero-content">
+      <h1>CRM magic that makes inboxes <span>happy</span></h1>
+      <p class="hero-tagline">We're a boutique agency of Iterable experts obsessed with lifecycle marketing. From fractional support to full-team firepower, we help brands build email programs that actually work.</p>
+      
+      <div class="hero-badges">
+        <span class="badge iterable">🚀 Iterable Certified</span>
+        <span class="badge pet">🐾 Pet Industry Pros</span>
+        <span class="badge travel">✈️ Travel & Hospitality</span>
+      </div>
+      
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Start a Conversation →</a>
+        <a href="#case-studies" class="btn-secondary">See Our Work</a>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="hero-card-icon">📊</div>
+          <div>
+            <div class="hero-card-title">Campaign Performance</div>
+            <div class="hero-card-stat">+47% this month</div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Open Rate</span>
+          <span class="metric-value up">38.2% ↑</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Click Rate</span>
+          <span class="metric-value up">12.4% ↑</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Revenue</span>
+          <span class="metric-value up">$284K ↑</span>
+        </div>
+      </div>
+      <div class="floating-badge floating-badge-1">✨ 9+ years experience</div>
+      <div class="floating-badge floating-badge-2">💌 300% avg ROAS</div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="section-header">
+      <span class="section-eyebrow">What We Do</span>
+      <h2 class="section-title">Full-service lifecycle marketing</h2>
+      <p class="section-subtitle">From strategy to execution, we handle every piece of your email and CRM puzzle.</p>
+    </div>
+    
+    <div class="services-grid">
+      <div class="service-card featured">
+        <div>
+          <div class="service-icon">🎯</div>
+          <h3 class="service-title">Iterable Implementation & Onboarding</h3>
+          <p class="service-description">Custom onboarding that actually sticks. We set up your Iterable instance the right way—from data architecture to your first automated journeys.</p>
+        </div>
+        <ul class="service-features">
+          <li>Data schema design & integration</li>
+          <li>Custom event tracking setup</li>
+          <li>Template system & brand library</li>
+          <li>Initial journey & campaign builds</li>
+          <li>Team training & documentation</li>
+          <li>Deliverability optimization</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">🔄</div>
+        <h3 class="service-title">Lifecycle Strategy</h3>
+        <p class="service-description">We map your customer journey and build the automations that turn subscribers into superfans.</p>
+        <ul class="service-features">
+          <li>Customer journey mapping</li>
+          <li>Segmentation strategy</li>
+          <li>Automation architecture</li>
+          <li>A/B testing frameworks</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">✉️</div>
+        <h3 class="service-title">Campaign Execution</h3>
+        <p class="service-description">From creative to code to send—we handle the day-to-day so you can focus on the big picture.</p>
+        <ul class="service-features">
+          <li>Email design & copywriting</li>
+          <li>HTML/CSS development</li>
+          <li>Campaign deployment</li>
+          <li>Performance reporting</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3 class="service-title">Analytics & Optimization</h3>
+        <p class="service-description">Data-driven decisions that move the needle. We track what matters and optimize relentlessly.</p>
+        <ul class="service-features">
+          <li>Custom dashboard creation</li>
+          <li>Revenue attribution</li>
+          <li>Deliverability monitoring</li>
+          <li>Continuous improvement</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">🛠️</div>
+        <h3 class="service-title">ESP Migration</h3>
+        <p class="service-description">Moving to Iterable? We'll make the transition seamless—no lost data, no downtime, no drama.</p>
+        <ul class="service-features">
+          <li>Platform evaluation</li>
+          <li>Data migration planning</li>
+          <li>Template recreation</li>
+          <li>Audience warming</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3 class="service-title">Creative Services</h3>
+        <p class="service-description">Emails that look good AND perform. Our designs are on-brand, mobile-first, and conversion-focused.</p>
+        <ul class="service-features">
+          <li>Brand-aligned templates</li>
+          <li>Modular design systems</li>
+          <li>Interactive elements</li>
+          <li>Dark mode optimization</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement Models -->
+  <section id="how-we-work" class="engagement">
+    <div class="section-header">
+      <span class="section-eyebrow">How We Work</span>
+      <h2 class="section-title">Flexible partnerships that fit</h2>
+      <p class="section-subtitle">Whether you need a single specialist or a complete CRM team, we've got you.</p>
+    </div>
+    
+    <div class="engagement-cards">
+      <div class="engagement-card">
+        <div class="engagement-icon">👤</div>
+        <h3 class="engagement-title">Fractional Support</h3>
+        <p class="engagement-subtitle">Specialist to Director level</p>
+        <p class="engagement-description">Need extra hands without the full-time commitment? We plug into your team at any level—from campaign specialist to strategic director.</p>
+        <ul class="engagement-features">
+          <li>Part-time or project-based</li>
+          <li>Specialist, Manager, or Director</li>
+          <li>Works within your processes</li>
+          <li>Flexible hours & scope</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Learn More</a>
+      </div>
+      
+      <div class="engagement-card popular">
+        <span class="popular-tag">Most Popular</span>
+        <div class="engagement-icon">👥</div>
+        <h3 class="engagement-title">Full Team</h3>
+        <p class="engagement-subtitle">Complete CRM department</p>
+        <p class="engagement-description">Get an entire lifecycle marketing team: strategist, designer, developer, and campaign manager—all working together on your brand.</p>
+        <ul class="engagement-features">
+          <li>Dedicated account team</li>
+          <li>Strategy + execution</li>
+          <li>Monthly roadmapping</li>
+          <li>Slack/Teams integration</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Learn More</a>
+      </div>
+      
+      <div class="engagement-card">
+        <div class="engagement-icon">🚀</div>
+        <h3 class="engagement-title">Project-Based</h3>
+        <p class="engagement-subtitle">Implementations & migrations</p>
+        <p class="engagement-description">Have a specific initiative? We'll scope it, build it, and hand it off—complete with documentation and training.</p>
+        <ul class="engagement-features">
+          <li>Fixed scope & timeline</li>
+          <li>Iterable implementations</li>
+          <li>ESP migrations</li>
+          <li>Automation builds</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section id="industries" class="industries">
+    <div class="industries-wrapper">
+      <div class="section-header">
+        <span class="section-eyebrow">Our Expertise</span>
+        <h2 class="section-title">Industries we know inside out</h2>
+        <p class="section-subtitle">Deep vertical expertise means faster results and smarter strategies.</p>
+      </div>
+      
+      <div class="industries-grid">
+        <div class="industry-card primary">
+          <span class="industry-emoji">🐕</span>
+          <h3 class="industry-name">Pet Industry</h3>
+          <p class="industry-description">From pet food subscriptions to vet clinics—we speak pet parent fluently.</p>
+          <span class="industry-badge">Primary Specialty</span>
+        </div>
+        
+        <div class="industry-card">
+          <span class="industry-emoji">✈️</span>
+          <h3 class="industry-name">Travel & Hospitality</h3>
+          <p class="industry-description">Booking confirmations, trip inspiration, loyalty programs—we've done it all.</p>
+          <span class="industry-badge">Deep Experience</span>
+        </div>
+        
+        <div class="industry-card">
+          <span class="industry-emoji">🛒</span>
+          <h3 class="industry-name">E-commerce</h3>
+          <p class="industry-description">Cart abandonment, post-purchase flows, win-backs—the lifecycle essentials.</p>
+          <span class="industry-badge">Proven Results</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Expertise -->
+  <section class="platforms">
+    <div class="platforms-inner">
+      <h2>Iterable is our superpower</h2>
+      <p>We've been in the Iterable trenches for years. From complex implementations to day-to-day optimization, we know every corner of the platform.</p>
+      
+      <div class="platform-logo">
+        <svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="10" width="30" height="30" rx="6" fill="#4ECDC4"/>
+          <rect x="20" y="10" width="30" height="30" rx="6" fill="#2C3E50" opacity="0.8"/>
+        </svg>
+        <span>iterable</span>
+      </div>
+      
+      <div class="platform-stats">
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Iterable implementations</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">9</div>
+          <div class="stat-label">Years of experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">300%</div>
+          <div class="stat-label">Average ROAS increase</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section id="case-studies" class="case-studies">
+    <div class="section-header">
+      <span class="section-eyebrow">Results</span>
+      <h2 class="section-title">Work that wags tails</h2>
+      <p class="section-subtitle">Real results from real partnerships. Here's what we've built together.</p>
+    </div>
+    
+    <div class="case-studies-grid">
+      <div class="case-study-card">
+        <div class="case-study-image">🐾</div>
+        <div class="case-study-content">
+          <span class="case-study-industry">Pet Industry</span>
+          <h3 class="case-study-title">Premium Pet Food Brand Lifecycle Overhaul</h3>
+          <div class="case-study-results">
+            <div class="result-item">
+              <div class="result-value">+247%</div>
+              <div class="result-label">Email Revenue</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value">+89%</div>
+              <div class="result-label">Open Rates</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value">-40%</div>
+              <div class="result-label">Churn Rate</div>
+            </div>
+          </div>
+          <a href="#" class="case-study-link">Read the full story →</a>
+        </div>
+      </div>
+      
+      <div class="case-study-card">
+        <div class="case-study-image">🏨</div>
+        <div class="case-study-content">
+          <span class="case-study-industry">Travel & Hospitality</span>
+          <h3 class="case-study-title">Boutique Hotel Chain Migration to Iterable</h3>
+          <div class="case-study-results">
+            <div class="result-item">
+              <div class="result-value">$1.2M</div>
+              <div class="result-label">Attributed Revenue</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value">+156%</div>
+              <div class="result-label">Booking Rate</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value">4 wks</div>
+              <div class="result-label">Migration Time</div>
+            </div>
+          </div>
+          <a href="#" class="case-study-link">Read the full story →</a>
+        </div>
+      </div>
+      
+      <div class="case-study-card">
+        <div class="case-study-image">🛍️</div>
+        <div class="case-study-content">
+          <span class="case-study-industry">E-commerce</span>
+          <h3 class="case-study-title">DTC Brand Cart Abandonment Revolution</h3>
+          <div class="case-study-results">
+            <div class="result-item">
+              <div class="result-value">+312%</div>
+              <div class="result-label">Recovery Rate</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value">$847K</div>
+              <div class="result-label">Recovered Rev</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value">23%</div>
+              <div class="result-label">AOV Increase</div>
+            </div>
+          </div>
+          <a href="#" class="case-study-link">Read the full story →</a>
+        </div>
+      </div>
+      
+      <div class="case-study-card">
+        <div class="case-study-image">🐱</div>
+        <div class="case-study-content">
+          <span class="case-study-industry">Pet Industry</span>
+          <h3 class="case-study-title">Pet Subscription Box Welcome Series</h3>
+          <div class="case-study-results">
+            <div class="result-item">
+              <div class="result-value">+67%</div>
+              <div class="result-label">Trial to Paid</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value">+45%</div>
+              <div class="result-label">LTV Increase</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value">52%</div>
+              <div class="result-label">Open Rate</div>
+            </div>
+          </div>
+          <a href="#" class="case-study-link">Read the full story →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog/Insights -->
+  <section id="blog" class="blog">
+    <div class="section-header">
+      <span class="section-eyebrow">Insights</span>
+      <h2 class="section-title">Fresh from the Damsel desk</h2>
+      <p class="section-subtitle">Iterable tips, lifecycle strategies, and CRM wisdom—straight from the experts.</p>
+    </div>
+    
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-image">🎯</div>
+        <div class="blog-content">
+          <span class="blog-tag">Iterable</span>
+          <h3 class="blog-title">The Ultimate Iterable Onboarding Checklist</h3>
+          <p class="blog-excerpt">Everything you need to set up Iterable right the first time—from data schemas to your first automated journey.</p>
+          <a href="#" class="blog-link">Read more →</a>
+        </div>
+      </div>
+      
+      <div class="blog-card">
+        <div class="blog-image">📧</div>
+        <div class="blog-content">
+          <span class="blog-tag">Strategy</span>
+          <h3 class="blog-title">Why Your Welcome Series is Probably Broken</h3>
+          <p class="blog-excerpt">5 common mistakes we see in welcome flows—and how to fix them for better engagement and conversion.</p>
+          <a href="#" class="blog-link">Read more →</a>
+        </div>
+      </div>
+      
+      <div class="blog-card">
+        <div class="blog-image">🐕</div>
+        <div class="blog-content">
+          <span class="blog-tag">Pet Industry</span>
+          <h3 class="blog-title">Email Marketing for Pet Brands: A Complete Guide</h3>
+          <p class="blog-excerpt">How to speak to pet parents, build loyalty, and drive repeat purchases with lifecycle marketing.</p>
+          <a href="#" class="blog-link">Read more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team" class="team">
+    <div class="section-header">
+      <span class="section-eyebrow">The Team</span>
+      <h2 class="section-title">Meet your CRM crew</h2>
+      <p class="section-subtitle">Three co-founders, decades of combined experience, one shared obsession: email that works.</p>
+    </div>
+    
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👩‍💼</div>
+        <h3 class="team-name">Davida</h3>
+        <p class="team-role">CRM & Lifecycle Lead</p>
+        <p class="team-bio">9+ years in CRM and lifecycle marketing. Iterable power user. Deliverability nerd. Makes data make sense.</p>
+      </div>
+      
+      <div class="team-card">
+        <div class="team-avatar">👩‍🦰</div>
+        <h3 class="team-name">Co-Founder 2</h3>
+        <p class="team-role">Iterable Specialist</p>
+        <p class="team-bio">Deep Iterable expertise from implementation to optimization. Automation architect. Journey mapping enthusiast.</p>
+      </div>
+      
+      <div class="team-card">
+        <div class="team-avatar">👩‍🔬</div>
+        <h3 class="team-name">Co-Founder 3</h3>
+        <p class="team-role">Pet Industry Expert</p>
+        <p class="team-bio">Years of experience in pet industry marketing. Knows what makes pet parents tick (and click).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="cta">
+    <div class="cta-shapes">
+      <div class="cta-shape cta-shape-1"></div>
+      <div class="cta-shape cta-shape-2"></div>
+      <div class="cta-shape cta-shape-3"></div>
+    </div>
+    <div class="cta-content">
+      <h2>Ready to rescue your email program?</h2>
+      <p>Let's chat about your CRM goals. No pressure, no jargon—just a conversation about what's possible.</p>
+      <a href="mailto:hello@damselagency.com" class="btn-primary">Schedule a Free Consultation →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+            </svg>
+          </div>
+          Damsel Agency
+        </a>
+        <p>Boutique CRM and lifecycle marketing agency specializing in Iterable. We help brands build email programs that actually work.</p>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Iterable Implementation</a></li>
+          <li><a href="#">Lifecycle Strategy</a></li>
+          <li><a href="#">Campaign Execution</a></li>
+          <li><a href="#">ESP Migration</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">hello@damselagency.com</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 Damsel Agency. All rights reserved. Made with 💌 and lots of caffeine.</p>
+    </div>
+  </footer>
+</body>
+</html>
