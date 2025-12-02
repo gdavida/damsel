@@ -1298,3 +1298,10 @@ footer {
     flex: 1 1 30%;
   }
 }
+
+/* IMAGES */
+
+.platform-logo #iterable {
+  max-width: 300px;
+  height: auto;
+}
