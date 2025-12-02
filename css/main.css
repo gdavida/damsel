@@ -81,14 +81,8 @@ nav {
 }
 
 .logo {
-  font-family: 'Fraunces', serif;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--coral);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  max-width: 200px;
+  height: auto;
 }
 
 .logo-icon {
