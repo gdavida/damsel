@@ -1359,6 +1359,15 @@ footer {
   color: var(--yellow);
 }
 
+/* Honeypot - hide from humans */
+.form-field-hp {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .cta-form {

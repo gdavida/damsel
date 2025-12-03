@@ -491,6 +491,10 @@
             <div class="form-field">
               <input type="email" id="email" name="email" placeholder="Email" required>
             </div>
+            <!-- Honeypot field - invisible to humans, bots will fill it -->
+            <div class="form-field-hp" aria-hidden="true">
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
             <button type="submit" class="btn-primary">Let's Talk →</button>
           </form>
           <p id="form-status" class="form-status"></p>
@@ -518,11 +522,22 @@
       };
       
       // Validate
-      if (!data.name || !data.company || !data.email) {
-        status.textContent = 'Please fill in all fields';
-        status.className = 'form-status error';
-        return;
-      }
+        // Honeypot check - if filled, it's a bot
+        const honeypot = document.getElementById('website').value;
+        if (honeypot) {
+          // Silently reject, don't tell the bot it failed
+          status.textContent = "Thanks! We'll reach out soon to find a time to chat.";
+          status.className = 'form-status success';
+          form.reset();
+          return;
+        }
+
+        // Validate
+        if (!data.name || !data.company || !data.email) {
+          status.textContent = 'Please fill in all fields';
+          status.className = 'form-status error';
+          return;
+        }
       
       // Show loading state
       button.disabled = true;
