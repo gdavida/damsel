@@ -33,6 +33,7 @@ body {
 h1, h2, h3, h4 {
   font-family: 'Fraunces', serif;
   font-weight: 600;
+  line-height: 1.3 !important;
 }
 
 /* Animated grain overlay */
@@ -158,8 +159,7 @@ nav {
    HERO SECTION
    ================================ */
 .hero {
-  min-height: 100vh;
-  padding: 8rem 0 6rem;
+  padding: 6rem 0 6rem;
   position: relative;
   overflow: hidden;
 }
@@ -290,6 +290,7 @@ nav {
   border: 2px solid var(--coral);
   transition: all 0.3s;
   font-size: 1rem;
+  line-height: 1.1;
 }
 
 .btn-primary:hover {
@@ -311,6 +312,7 @@ nav {
   border: 2px solid var(--navy);
   transition: all 0.3s;
   font-size: 1rem;
+  line-height: 1.1;
 }
 
 .btn-secondary:hover {
@@ -463,7 +465,7 @@ nav {
    SERVICES SECTION
    ================================ */
 .services {
-  padding: 8rem 0;
+  padding: 6rem 0;
   background: var(--white);
   position: relative;
 }
@@ -572,7 +574,7 @@ nav {
    ENGAGEMENT SECTION
    ================================ */
 .engagement {
-  padding: 8rem 0;
+  padding: 6rem 0;
   background: var(--navy);
   color: var(--white);
   position: relative;
@@ -689,7 +691,7 @@ nav {
    INDUSTRIES SECTION
    ================================ */
 .industries {
-  padding: 8rem 0;
+  padding: 6rem 0;
   background: var(--cream);
 }
 
@@ -790,9 +792,10 @@ nav {
   margin-bottom: 2rem;
 }
 
-.platform-logo svg {
-  height: 40px;
-  width: auto;
+.platform-logo img {
+  height: auto;
+  width: 200px;
+  max-width: 100%;
 }
 
 .platform-logo span {
@@ -831,7 +834,7 @@ nav {
    CASE STUDIES SECTION
    ================================ */
 .case-studies {
-  padding: 8rem 0;
+  padding: 6rem 0;
   background: var(--white);
 }
 
@@ -924,7 +927,7 @@ nav {
    BLOG SECTION
    ================================ */
 .blog {
-  padding: 8rem 0;
+  padding: 6rem 0;
   background: var(--cream);
 }
 
@@ -1010,7 +1013,7 @@ nav {
    TEAM SECTION
    ================================ */
 .team {
-  padding: 8rem 0;
+  padding: 6rem 0;
   background: var(--white);
 }
 
@@ -1036,12 +1039,12 @@ nav {
 
 .team-blurb p {
   font-size: 1.1rem;
-  line-height: 1.8;
+  line-height: 1.;
   color: var(--navy-light);
   margin-bottom: 1.5rem;
 }
 
-.team-blurb p:last-child {
+.team-blurb p:last-child {5
   margin-bottom: 0;
 }
 
@@ -1061,7 +1064,7 @@ nav {
    CTA SECTION
    ================================ */
 .cta {
-  padding: 8rem 0;
+  padding: 6rem 0;
   background: linear-gradient(135deg, var(--coral) 0%, var(--coral-dark) 100%);
   text-align: center;
   position: relative;
@@ -1163,6 +1166,10 @@ footer {
   font-size: 0.95rem;
   line-height: 1.7;
   max-width: 300px;
+}
+
+.footer-bottom p a {
+  color: inherit !important;
 }
 
 .footer-column h4 {
@@ -1288,10 +1295,142 @@ footer {
     flex: 1 1 30%;
   }
 }
+/* ================================
+   CTA FORM
+   ================================ */
+.cta-form-wrapper {
+  margin-top: 2rem;
+}
 
-/* IMAGES */
+.cta-form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+  flex-direction: column;
+}
 
-.platform-logo #iterable {
-  max-width: 130px;
-  height: auto;
+.form-field {
+  flex: 1;
+  min-width: 350px;
+}
+
+.form-field input {
+  width: 100%;
+  padding: .8rem 1.25rem;
+  border: 2px solid var(--white);
+  border-radius: 100px;
+  font-size: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--navy);
+  transition: all 0.2s;
+}
+
+.form-field input::placeholder {
+  color: var(--navy-light);
+}
+
+.form-field input:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.cta-form .btn-primary {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.form-status {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.form-status.success {
+  color: var(--white);
+}
+
+.form-status.error {
+  color: var(--yellow);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cta-form {
+    flex-direction: column;
+  }
+
+  .form-field {
+    width: 100%;
+  }
+
+  .cta-form .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ================================
+   LEGAL PAGES (Privacy, Terms, etc.)
+   ================================ */
+.legal-page {
+  padding: 10rem 0 6rem;
+  background: var(--white);
+  min-height: 100vh;
+}
+
+.legal-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.legal-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: var(--navy);
+}
+
+.legal-updated {
+  font-size: 0.9rem;
+  color: var(--navy-light);
+  margin-bottom: 3rem;
+}
+
+.legal-content h2 {
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--navy);
+}
+
+.legal-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--navy-light);
+  margin-bottom: 1rem;
+}
+
+.legal-content ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.legal-content ul li {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--navy-light);
+  margin-bottom: 0.5rem;
+}
+
+.legal-content a {
+  color: var(--coral);
+}
+
+.legal-content a:hover {
+  text-decoration: underline;
 }

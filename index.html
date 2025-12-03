@@ -102,7 +102,7 @@
       </div>
       
       <div class="services-grid">
-        <div class="service-card featured">
+        <div class="service-card featured" id="iterable-implementation">
           <div>
             <div class="service-icon">🎯</div>
             <h3 class="service-title">Iterable Implementation & Onboarding</h3>
@@ -118,7 +118,7 @@
           </ul>
         </div>
         
-        <div class="service-card">
+        <div class="service-card" id="lifecycle-strategy">
           <div class="service-icon">🔄</div>
           <h3 class="service-title">Lifecycle Strategy</h3>
           <p class="service-description">We map your customer journey and build the automations that turn subscribers into superfans.</p>
@@ -130,7 +130,7 @@
           </ul>
         </div>
         
-        <div class="service-card">
+        <div class="service-card" id="campaign-execution">
           <div class="service-icon">✉️</div>
           <h3 class="service-title">Campaign Execution</h3>
           <p class="service-description">From creative to code to send—we handle the day-to-day so you can focus on the big picture.</p>
@@ -142,7 +142,7 @@
           </ul>
         </div>
         
-        <div class="service-card">
+        <div class="service-card" id="analytics">
           <div class="service-icon">📈</div>
           <h3 class="service-title">Analytics & Optimization</h3>
           <p class="service-description">Data-driven decisions that move the needle. We track what matters and optimize relentlessly.</p>
@@ -154,7 +154,7 @@
           </ul>
         </div>
         
-        <div class="service-card">
+        <div class="service-card" id="esp-migration">
           <div class="service-icon">🛠️</div>
           <h3 class="service-title">ESP Migration</h3>
           <p class="service-description">Moving to Iterable? We'll make the transition seamless—no lost data, no downtime, no drama.</p>
@@ -166,7 +166,7 @@
           </ul>
         </div>
         
-        <div class="service-card">
+        <div class="service-card" id="creative-services">
           <div class="service-icon">🎨</div>
           <h3 class="service-title">Creative Services</h3>
           <p class="service-description">Emails that look good AND perform. Our designs are on-brand, mobile-first, and conversion-focused.</p>
@@ -468,7 +468,7 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
+<!-- CTA Section -->
   <section id="contact" class="cta">
     <div class="cta-shapes">
       <div class="cta-shape cta-shape-1"></div>
@@ -479,10 +479,84 @@
       <div class="cta-content">
         <h2>Ready to rescue your email program?</h2>
         <p>Let's chat about your CRM goals. No pressure, no jargon—just a conversation about what's possible.</p>
-        <a href="mailto:hello@damselagency.com" class="btn-primary">Schedule a Free Consultation →</a>
+        
+        <div class="cta-form-wrapper">
+          <form id="contact-form" class="cta-form">
+            <div class="form-field">
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-field">
+              <input type="text" id="company" name="company" placeholder="Company" required>
+            </div>
+            <div class="form-field">
+              <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <button type="submit" class="btn-primary">Let's Talk →</button>
+          </form>
+          <p id="form-status" class="form-status"></p>
+        </div>
       </div>
     </div>
   </section>
+
+  <script>
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzez3n8saQ5MME1VVkEbWvyPJ4TJr2Gs7VbK0guZO3DNoxyx6Y4LavfvcKRFfI0GsEj/exec'; // Paste your Apps Script URL here
+    
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const form = e.target;
+      const button = form.querySelector('button');
+      const status = document.getElementById('form-status');
+      
+      // Get form data
+      const data = {
+        name: document.getElementById('name').value,
+        company: document.getElementById('company').value,
+        email: document.getElementById('email').value,
+        source: 'Form: Homepage CTA'
+      };
+      
+      // Validate
+      if (!data.name || !data.company || !data.email) {
+        status.textContent = 'Please fill in all fields';
+        status.className = 'form-status error';
+        return;
+      }
+      
+      // Show loading state
+      button.disabled = true;
+      button.textContent = 'Sending...';
+      
+      try {
+        // Submit to Google Sheets
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+        
+        // Success
+        status.textContent = "Thanks! We'll reach out soon to find a time to chat.";
+        status.className = 'form-status success';
+        
+        // Reset form
+        form.reset();
+        
+      } catch (error) {
+        status.textContent = 'Something went wrong. Please email us at hello@damselagency.com';
+        status.className = 'form-status error';
+        console.error('Form error:', error);
+      }
+      
+      // Reset button
+      button.disabled = false;
+      button.textContent = "Let's Talk →";
+    });
+  </script>
 
   <!-- Footer -->
   <footer>
@@ -503,20 +577,20 @@
         <div class="footer-column">
           <h4>Services</h4>
           <ul>
-            <li><a href="#">Iterable Implementation</a></li>
-            <li><a href="#">Lifecycle Strategy</a></li>
-            <li><a href="#">Campaign Execution</a></li>
-            <li><a href="#">ESP Migration</a></li>
+            <li><a href="#iterable-implementation">Iterable Implementation</a></li>
+            <li><a href="#lifecycle-strategy">Lifecycle Strategy</a></li>
+            <li><a href="#campaign-execution">Campaign Execution</a></li>
+            <li><a href="#esp-migration">ESP Migration</a></li>
           </ul>
         </div>
         
         <div class="footer-column">
           <h4>Company</h4>
           <ul>
-            <li><a href="#">About Us</a></li>
+            <li><a href="#team">About Us</a></li>
             <li><a href="#">Case Studies</a></li>
             <li><a href="#blog">Blog</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
         
@@ -530,7 +604,7 @@
       </div>
       
       <div class="footer-bottom">
-        <p>© 2025 Damsel Agency. All rights reserved. Made with 💌 and lots of caffeine.</p>
+        <p>© 2025 Damsel Agency LLC. All rights reserved. Made with 💌 and lots of caffeine.<br><a href="/privacy.html">Privacy Policy</a></p>
       </div>
     </div>
   </footer>
