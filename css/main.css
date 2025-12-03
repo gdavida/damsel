@@ -1014,59 +1014,49 @@ nav {
   background: var(--white);
 }
 
-.team-grid {
+.team-content {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.team-card {
-  text-align: center;
-  padding: 2rem;
-}
-
-.team-avatar {
-  width: 160px;
-  height: 160px;
-  background: linear-gradient(135deg, var(--peach), var(--lavender));
-  border: 4px solid var(--navy);
-  border-radius: 50%;
-  margin: 0 auto 1.5rem;
-  display: flex;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
   align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-  position: relative;
+}
+
+.team-image {
+  border-radius: 24px;
   overflow: hidden;
+  border: 3px solid var(--navy);
+  box-shadow: 8px 8px 0 var(--navy);
 }
 
-.team-avatar::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  background: var(--cream);
+.team-image img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.team-name {
-  font-size: 1.4rem;
-  margin-bottom: 0.25rem;
-}
-
-.team-role {
-  color: var(--coral);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.team-bio {
-  font-size: 0.9rem;
+.team-blurb p {
+  font-size: 1.1rem;
+  line-height: 1.8;
   color: var(--navy-light);
-  line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
 
+.team-blurb p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .team-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .team-image {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
 /* ================================
    CTA SECTION
    ================================ */
