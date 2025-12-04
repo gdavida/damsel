@@ -81,11 +81,11 @@ PALETTE 3: Bold & Electric
 /* :root {
   --primary: #9061F9;
   --primary-dark: #6B21A8;
-  --secondary: #E2D9F3;
-  --secondary-light: #F5F3FF;
-  --accent-1: #7be0ff;
-  --accent-2: #A7F3D0;
-  --accent-3: #abb5fc;
+  --secondary: #abb5fc;
+  --secondary-light: #dde1fd;
+  --accent-1: #A7F3D0;
+  --accent-2: #b9efff;
+  --accent-3: #E2D9F3;
   --background: #FFF9F0;
   --surface: #FFFFFF;
   --text: #2D2A3E;
@@ -167,27 +167,6 @@ nav {
   height: auto;
 }
 
-.logo-icon {
-  width: 40px;
-  height: 40px;
-  background: var(--primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.logo-icon svg {
-  width: 24px;
-  height: 24px;
-  fill: var(--surface);
-}
 
 .nav-links {
   display: flex;
@@ -240,7 +219,7 @@ nav {
    HERO SECTION
    ================================ */
 .hero {
-  padding: 6rem 0 6rem;
+  padding: 8rem 0 6rem;
   position: relative;
   overflow: hidden;
 }
@@ -285,7 +264,7 @@ nav {
 
 .hero-content h1 {
   font-size: 4rem;
-  line-height: 1.1;
+  line-height: 1.1 !important;
   margin-bottom: 1.5rem;
   color: var(--text);
 }
@@ -509,6 +488,9 @@ nav {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
+
+
+
 
 /* ================================
    SECTION COMMON STYLES
@@ -1210,9 +1192,9 @@ nav {
 }
 
 .cta .btn-primary {
-  background: var(--surface);
+  background: var(--accent-1);
   color: var(--primary);
-  border-color: var(--surface);
+  border-color: var(--primary);
   font-size: 1.1rem;
   padding: 1.2rem 2.5rem;
 }
@@ -1239,9 +1221,12 @@ footer {
   margin-bottom: 3rem;
 }
 
-.footer-brand .logo {
-  color: var(--surface);
-  margin-bottom: 1rem;
+.logo-icon img {
+    max-width: 50px;
+    height: auto;
+    background-color: var(--primary);
+    padding: 10px;
+    border-radius: 50%;
 }
 
 .footer-brand p {
@@ -1249,6 +1234,12 @@ footer {
   font-size: 0.95rem;
   line-height: 1.7;
   max-width: 300px;
+}
+
+.footer-brand a {
+  color: rgba(255,255,255,0.7) !important;
+  text-decoration: none;
+  font-weight: 700;
 }
 
 .footer-bottom p a {
