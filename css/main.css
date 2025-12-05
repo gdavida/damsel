@@ -1522,6 +1522,6 @@ footer {
 /* FONT AWESOME */
 
 /* .fatl:after, .fa-thumbprint:after {
-    color: var(--primary);
-    opacity: .4;
+    color: var(--primary) !important;
+    opacity: .4 !important;
 } */
