@@ -1518,3 +1518,10 @@ footer {
 .legal-content a:hover {
   text-decoration: underline;
 }
+
+/* FONT AWESOME */
+
+.fa-thumbprint:after {
+    color: var(--primary);
+    opacity: .5;
+}
